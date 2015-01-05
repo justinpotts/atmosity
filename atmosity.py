@@ -41,13 +41,14 @@ def teardown_request(exception):
 def show_entries():
     cur = g.db.execute('select time_stamp, temperature, humidity, pressure from entries order by id desc')
     entries = [dict(time_stamp=row[0], temperature=row[1], humidity=row[2], pressure=row[3]) for row in cur.fetchall()]
-    return render_template('show_entries.html', entries=entries)
+    return render_template('show_entries.html', entries=entries, unit=variables.unit,
+                             convert_temp=convert_temp, convert_pressure=convert_pressure)
 
 @app.route('/add', methods=['POST'])
 def add_entry():
     if not session.get('logged_in'):
         abort(401)
-    weather = pywapi.get_weather_from_weather_com(str(variables.zip), variables.unit)
+    weather = pywapi.get_weather_from_weather_com(str(variables.zip), 'metric')
     g.db.execute('insert into entries (time_stamp, temperature, humidity, pressure) values (?, ?, ?, ?)',
                  [str(time),
                   str(weather['current_conditions']['temperature']),
@@ -93,6 +94,12 @@ def change_unit():
         variables.unit = 'metric'
     flash('Units have changed to ' + variables.unit)
     return redirect(url_for('show_entries'))
+
+def convert_temp(temp):
+    return (float(temp) * 1.8 + 32)
+
+def convert_pressure(pressure):
+    return (float(pressure) * 6894.76)
 
 if __name__ == '__main__':
     app.run()

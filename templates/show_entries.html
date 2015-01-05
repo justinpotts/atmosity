@@ -23,9 +23,16 @@
         <ul class=entries>
     {% for entry in entries %}
         <li><h2>{{ entry.time_stamp }}</h2>
-        <p>Temperature: {{ entry.temperature }}</p>
-        <p>Humidity: {{ entry.humidity }}</p>
-        <p>Pressure: {{ entry.pressure }}</p>
+        {% if unit == 'metric' %}
+            <p>Temperature: {{ entry.temperature }} degrees C</p>
+            <p>Humidity: {{ entry.humidity }}%</p>
+            <p>Pressure: {{ entry.pressure }} PSI</p>
+        {% endif %}
+        {% if unit == 'imperial' %}
+            <p>Temperature: {{ convert_temp(entry.temperature) }} degrees F</p>
+            <p>Humidity: {{ entry.humidity }}%</p>
+            <p>Pressure: {{ convert_pressure(entry.pressure) }} Pascals<p>
+        {% endif %}
     {% else %}
         <li><em>No entries so far! Configure data settings in the admin dashboard.</em>
     {% endfor %}
