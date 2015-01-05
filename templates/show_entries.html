@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if session.logged_in %}
+        <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+            <dl>
+                <!--<dt>Zip Code:
+                <dd><input type=text size=30 name=zip>
+                -->
+                <dd><input type=submit value='Update Info'>
+            </dl>
+        </form>
+        <form action="{{ url_for('flush')}}" method=get class=flush-data>
+            <dl>
+                <dd><input type=submit value='Flush Data'>
+            </dl>
+        </form>
+        <form action="{{ url_for('change_unit')}}" method=get class=change-unit>
+            <dl>
+                <dd><input type=submit value='Change Unit'>
+            </dl>
+        </form>
+    {% endif %}
+        <ul class=entries>
+    {% for entry in entries %}
+        <li><h2>{{ entry.time_stamp }}</h2>
+        Temperature: {{ entry.temperature }}
+        Humidity: {{ entry.humidity }}
+        Pressure: {{ entry.pressure }}
+    {% else %}
+        <li><em>No entries so far! Log in to configure data settings.</em>
+    {% endfor %}
+    </ul>
+{% endblock %}
