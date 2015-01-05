@@ -9,8 +9,8 @@ import variables
 DATABASE = 'entries.db'
 DEBUG = True
 SECRET_KEY = 'development key'
-USERNAME = 'justin'
-PASSWORD = 'admintest'
+USERNAME = 'admin'
+PASSWORD = 'admin'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
