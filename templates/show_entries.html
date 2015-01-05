@@ -23,11 +23,11 @@
         <ul class=entries>
     {% for entry in entries %}
         <li><h2>{{ entry.time_stamp }}</h2>
-        Temperature: {{ entry.temperature }}
-        Humidity: {{ entry.humidity }}
-        Pressure: {{ entry.pressure }}
+        <p>Temperature: {{ entry.temperature }}</p>
+        <p>Humidity: {{ entry.humidity }}</p>
+        <p>Pressure: {{ entry.pressure }}</p>
     {% else %}
-        <li><em>No entries so far! Log in to configure data settings.</em>
+        <li><em>No entries so far! Configure data settings in the admin dashboard.</em>
     {% endfor %}
     </ul>
 {% endblock %}
