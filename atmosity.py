@@ -16,8 +16,6 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('ATMOSITY_SETTINGS', silent=True)
 
-time = time.strftime("%a, %m/%d/%Y - %r", time.localtime())
-
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
 
@@ -48,9 +46,10 @@ def show_entries():
 def add_entry():
     if not session.get('logged_in'):
         abort(401)
+    current_time = time.strftime("%a, %m/%d/%Y - %r", time.localtime())
     weather = pywapi.get_weather_from_weather_com(str(variables.zip), 'metric')
     g.db.execute('insert into entries (time_stamp, temperature, humidity, pressure) values (?, ?, ?, ?)',
-                 [str(time),
+                 [str(current_time),
                   str(weather['current_conditions']['temperature']),
                   str(weather['current_conditions']['humidity']),
                   str(weather['current_conditions']['barometer']['reading'])])
