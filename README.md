@@ -47,13 +47,9 @@ Setup your database with the following series of commands in the atmosity home d
 
 #### Python Weather API (pywapi)
 
-Download the latest pywapi library from: https://launchpad.net/python-weather-api/trunk/0.3.8/+download/pywapi-0.3.8.tar.gz
+Run the command:
 
-Untar the source distribution and run: 
-
-> $ python setup.py build
-
-> $ python setup.py install
+> $ pip install pywapi
 
 That's it! Now you're ready to run Atmosity!
 
