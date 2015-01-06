@@ -29,9 +29,9 @@ Setup your database:
 
 > $ python
 
-> >>> from atmosity import init_db
+> \>\>\> from atmosity import init_db
 
-> >>> init_db()
+> \>\>\> init_db()
 
 
 
