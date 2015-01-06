@@ -15,35 +15,25 @@ First, you will need to install the following items:
   2. Download the latest version
   3. Follow these steps
   
-> $tar xvfz sqlite-autoconf-3071502.tar.gz
+> $ tar xvfz sqlite-autoconf-3071502.tar.gz
 
-> $cd sqlite-autoconf-3071502
+> $ cd sqlite-autoconf-3071502
 
-> $./configure --prefix=/usr/local
+> $ ./configure --prefix=/usr/local
 
-> $make
+> $ make
 
-> $make install
+> $ make install
 
-Setup your database with the following series of commands in the atmosity home directory:
+Setup your database:
 
-> sqlite3
+> $ python
 
-> sqlite> .open entries.db
+> >>> from atmosity import init_db
 
-> sqlite> CREATE TABLE entries(
+> >>> init_db()
 
-> ...> id integer primary key autoincrement,
 
->	...> time_stamp text not null,
-
->	...> temperature text not null,
-
->	...> humidity text not null,
-
->	...> pressure text not null
-
-> );
 
 #### Python Weather API (pywapi)
 
