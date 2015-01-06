@@ -5,10 +5,11 @@ Check out our website in the making at https://atmosity.wordpress.com.
 
 ##Setup
 
-First, you will need to install the following items:
+#### Pre-requisites
 
-#### Flask
-> sudo pip install Flask
+> pip install -r requirements.txt
+
+This will install Flask and pywapi.
 
 #### sqlite3
   1. Go to http://www.sqlite.org/download.html
@@ -25,31 +26,27 @@ First, you will need to install the following items:
 
 > $make install
 
-Setup your database with the following series of commands in the atmosity home directory:
+Alternatively, if you are running macports, do a `sudo port install sqlite3`.
 
-> sqlite3
+#### Database setup
 
-> sqlite> .open entries.db
+> python
 
-> sqlite> CREATE TABLE entries(
+> from atmosity import init_db
 
-> ...> id integer primary key autoincrement,
+> init_db()
 
->	...> time_stamp text not null,
+#### Manual Install of Python Weather API (pywapi)
 
->	...> temperature text not null,
+If pywapi does not install succesfully via pip, read this section, otherwise feel free to skip it.
 
->	...> humidity text not null,
+Download the latest pywapi library from: https://launchpad.net/python-weather-api/trunk/0.3.8/+download/pywapi-0.3.8.tar.gz
 
->	...> pressure text not null
+Untar the source distribution and run:
 
-> );
+> $ python setup.py build
 
-#### Python Weather API (pywapi)
-
-Run the command:
-
-> $ pip install pywapi
+> $ python setup.py install
 
 That's it! Now you're ready to run Atmosity!
 
