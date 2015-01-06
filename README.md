@@ -10,7 +10,7 @@ First, you will need to install the following items:
 #### Flask
 > sudo pip install Flask
 
-#### mysqlite3
+#### sqlite3
   1. Go to http://www.sqlite.org/download.html
   2. Download the latest version
   3. Follow these steps
