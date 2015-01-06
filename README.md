@@ -50,7 +50,7 @@ Untar the source distribution and run:
 
 That's it! Now you're ready to run Atmosity!
 
-##Run
+## Run
 
 Navigate to the home directory and run the command:
 >python atmosity.py
@@ -63,13 +63,13 @@ You should see something similar to
 
 You may log into the admin control panel with the default username and password as 'admin'.
 
-##Contribute
+## Contribute
 Contributions are always welcome! Atmosity is completely open, hackable, and free to the limits of your own imagination.
 Add on your own sensors, build your own dashboard, or host a server and share your information to the world.
 
 Be sure that your code complies with Pep8 standards, although we are a bit loose on the 79 character line limit rule :).
 Also remember to do all of your work on a branch something other than master. That way, your work is a bit safer from
-accidental modifcations.
+accidental modifications.
 
 You can find some issues to work on in our issues section of the Atmosity repository. Assign yourself one, or ask one of us for
 permission to work on it and we will be sure to get it assigned! Do some work, then submit a pull request for review. Do us
